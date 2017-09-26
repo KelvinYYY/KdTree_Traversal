@@ -10,11 +10,11 @@ The result is from 50k points, 100k query points for 5 nearest neighbor.
  
 Result of local stack
 
-https://gitlab.com/Nbody-Portal/Nbody-ML/uploads/2c2663237f75505a75c0693e1e901f0b/Capture.JPG
+https://user-images.githubusercontent.com/18172104/30877497-c527e516-a2ae-11e7-9041-8e020d1ed820.JPG
  
 Result of Global memory stack
 
-https://gitlab.com/Nbody-Portal/Nbody-ML/uploads/ebc3e3bf4b5fa1cfbf4241538cbac485/Capture1.JPG
+https://user-images.githubusercontent.com/18172104/30877503-ca4d8adc-a2ae-11e7-9431-dfd36480d2e8.JPG
 
 
 
@@ -24,18 +24,16 @@ Tested Result for Autorope and Lockstep Traversal(KNN)
 
 The input data is from dataset directory
 
-![knn_10000](/uploads/e66cb29db4cfd567e5f4077de0fa3e4b/knn_10000.JPG)
-
-![knn_100000](/uploads/8806c4528543cbce94cfc99b977b2512/knn_100000.JPG)
-
-![knn_1000000](/uploads/b28f6fcf3aa815f3fa7f0c9001f6755b/knn_1000000.JPG)
+https://user-images.githubusercontent.com/18172104/30877510-ce45a2dc-a2ae-11e7-9b5b-787e904653c1.JPG
+https://user-images.githubusercontent.com/18172104/30877543-dcfcd3ae-a2ae-11e7-885f-4b3325d30f08.JPG
+https://user-images.githubusercontent.com/18172104/30877549-dff803f8-a2ae-11e7-8681-70f264c47699.JPG
 
 Tested code is in GPU_tests folder(compile with CUDA_KDTree_KNN)
 
 
 Result Compare with CPU(NN using ANN library)
 
-![Capture](/uploads/037b4022dd3073c02e4ea2efca15bea1/Capture.PNG)
+https://user-images.githubusercontent.com/18172104/30877549-dff803f8-a2ae-11e7-8681-70f264c47699.JPG
 
 Tested code is in NN_Compare folder
 
@@ -46,7 +44,7 @@ Graph of compute time(Autorope, Lockstep, ANN)
 
 Tested on G2-D3-1000000.csv
 
-![Capture](/uploads/f7ab7c5a0d9dc8f834fa76035eb19a60/Capture.JPG)
+https://user-images.githubusercontent.com/18172104/30877580-f3427286-a2ae-11e7-8880-b17e850fd5ad.JPG
 
 
 https://stackoverflow.com/questions/13480213/how-to-dynamically-allocate-arrays-inside-a-kernel
