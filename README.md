@@ -10,12 +10,11 @@ The result is from 50k points, 100k query points for 5 nearest neighbor.
  
 Result of local stack
 
-
-![Capture](/uploads/2c2663237f75505a75c0693e1e901f0b/Capture.JPG)
+https://gitlab.com/Nbody-Portal/Nbody-ML/uploads/2c2663237f75505a75c0693e1e901f0b/Capture.JPG
  
 Result of Global memory stack
 
-![Capture1](/uploads/ebc3e3bf4b5fa1cfbf4241538cbac485/Capture1.JPG)
+https://gitlab.com/Nbody-Portal/Nbody-ML/uploads/ebc3e3bf4b5fa1cfbf4241538cbac485/Capture1.JPG
 
 
 
