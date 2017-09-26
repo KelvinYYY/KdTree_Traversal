@@ -10,11 +10,11 @@ The result is from 50k points, 100k query points for 5 nearest neighbor.
  
 Result of local stack
 
-https://user-images.githubusercontent.com/18172104/30877497-c527e516-a2ae-11e7-9041-8e020d1ed820.JPG
+![capture](https://user-images.githubusercontent.com/18172104/30877497-c527e516-a2ae-11e7-9041-8e020d1ed820.JPG)
  
 Result of Global memory stack
 
-https://user-images.githubusercontent.com/18172104/30877503-ca4d8adc-a2ae-11e7-9431-dfd36480d2e8.JPG
+![capture1](https://user-images.githubusercontent.com/18172104/30877503-ca4d8adc-a2ae-11e7-9431-dfd36480d2e8.JPG)
 
 
 
@@ -24,16 +24,16 @@ Tested Result for Autorope and Lockstep Traversal(KNN)
 
 The input data is from dataset directory
 
-https://user-images.githubusercontent.com/18172104/30877510-ce45a2dc-a2ae-11e7-9b5b-787e904653c1.JPG
-https://user-images.githubusercontent.com/18172104/30877543-dcfcd3ae-a2ae-11e7-885f-4b3325d30f08.JPG
-https://user-images.githubusercontent.com/18172104/30877549-dff803f8-a2ae-11e7-8681-70f264c47699.JPG
+![knn_10000](https://user-images.githubusercontent.com/18172104/30877510-ce45a2dc-a2ae-11e7-9b5b-787e904653c1.JPG)
+![knn_10000](https://user-images.githubusercontent.com/18172104/30877543-dcfcd3ae-a2ae-11e7-885f-4b3325d30f08.JPG)
+![knn_10000](https://user-images.githubusercontent.com/18172104/30877549-dff803f8-a2ae-11e7-8681-70f264c47699.JPG)
 
 Tested code is in GPU_tests folder(compile with CUDA_KDTree_KNN)
 
 
 Result Compare with CPU(NN using ANN library)
 
-https://user-images.githubusercontent.com/18172104/30877549-dff803f8-a2ae-11e7-8681-70f264c47699.JPG
+![knn_10000](https://user-images.githubusercontent.com/18172104/30877549-dff803f8-a2ae-11e7-8681-70f264c47699.JPG)
 
 Tested code is in NN_Compare folder
 
@@ -44,11 +44,10 @@ Graph of compute time(Autorope, Lockstep, ANN)
 
 Tested on G2-D3-1000000.csv
 
-https://user-images.githubusercontent.com/18172104/30877580-f3427286-a2ae-11e7-8880-b17e850fd5ad.JPG
+![knn_10000](https://user-images.githubusercontent.com/18172104/30877580-f3427286-a2ae-11e7-8880-b17e850fd5ad.JPG)
 
 
-https://stackoverflow.com/questions/13480213/how-to-dynamically-allocate-arrays-inside-a-kernel
-[IHEPC.csv_HIGGS](/uploads/f1bf2a9b761b73ee58841eb9ff271c16/IHEPC.csv_HIGGS)
+![capture-2](https://user-images.githubusercontent.com/18172104/30877580-f3427286-a2ae-11e7-8880-b17e850fd5ad.JPG)
 
 
 
