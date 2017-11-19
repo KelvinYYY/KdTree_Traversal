@@ -50,25 +50,23 @@ __device__ float Array_Check(int *a, float *b, int idx, float dist, int k){
 	}
 	int i = 0;
 						
-						for (i = 0; i< k;i++){
-							if(dist<*(b+i)) break;
-						}
-						
-						
-						float temdis;
-						int temid;
-						//if(i==K_SIZE){return *(b+k-1);}
-						for (int j = k-1; j>=i+1;j--){
-							temdis = *(b+j);
-							*(b+j) = *(b+j-1);
-							*(b+j-1) = temdis;
-							temid = *(a+j);
-							*(a+j) = *(a+j-1);
-							*(a+j-1) = temid;
-							
-						}
-						*(a+i) = idx;
-						*(b+i) = dist;
+	for (i = 0; i< k;i++){
+		if(dist<*(b+i)) break;
+	}
+											
+	float temdis;
+	int temid;
+	//if(i==K_SIZE){return *(b+k-1);}
+	for (int j = k-1; j>=i+1;j--){
+	temdis = *(b+j);
+	*(b+j) = *(b+j-1);
+	*(b+j-1) = temdis;
+	temid = *(a+j);
+	*(a+j) = *(a+j-1);
+	*(a+j-1) = temid;
+	}
+	*(a+i) = idx;
+	*(b+i) = dist;
 	
 	return *(b+k-1);
 	
@@ -120,8 +118,8 @@ __device__ void Search(const CUDA_KDNode *nodes, const int *indexes, const Point
 			        if(largest_dist ==0){
 						//if largest_dist is already 0, stop searching
 						break;
-					}	
-					continue;
+				}	
+				continue;
 			}
 			else if (query.coords[split_axis] < nodes[cur].split_value){  
 				//closer to left, push right node before left node
@@ -156,24 +154,20 @@ __device__ void Search(const CUDA_KDNode *nodes, const int *indexes, const Point
 		float distd;
 		s1[0] = 0;
 		s1[0] |= 1<< 30;
-		while (top1 > -1){
+		while (top1 > -1) {
 			cur = s1[top1];
 			top1--;
 			warp_mask = (cur>>30)&1;
 			cur &= ~(1<<30);
-
-			
 			split_axis = nodes[cur].level % KDTREE_DIM;
 			
-
-			if (warp_mask== 1){
+			if (warp_mask== 1) {
 				//if thread in warp is active
-				
 				if (nodes[cur].left == -1){
-					//if it is leaf, update correlation
+				//if it is leaf, update correlation
 					for (i = 0; i < nodes[cur].num_indexes; i++) {
 						idxx = indexes[nodes[cur].indexes + i];
-						 distd = Distance(query, pts[idxx]);		
+						distd = Distance(query, pts[idxx]);		
 						if (distd < largest_dist) {				
 							largest_dist = Array_Check(&idx[0], &dist[0], idxx, distd, K_SIZE);
 						}
@@ -181,15 +175,15 @@ __device__ void Search(const CUDA_KDNode *nodes, const int *indexes, const Point
 					warp_mask = 0;
 					continue;
 				}
-				if(largest_dist ==0){
+				if (largest_dist ==0) {
 					break;
 				}
 
 			}
 			//combine mask from all threads in warp
 			
-			if (__any(warp_mask != 0)){
-				if (nodes[cur].right != -1){
+			if (__any(warp_mask != 0)) {
+				if (nodes[cur].right != -1) {
 						s1[++top1] = nodes[cur].right;
 						if (query.coords[split_axis] < nodes[cur].split_value && (query.coords[split_axis] - nodes[cur].split_value)*(query.coords[split_axis] - nodes[cur].split_value) > largest_dist){
 							//closer to left and query point distance to split axis already big enough, trancate right side.
@@ -201,7 +195,7 @@ __device__ void Search(const CUDA_KDNode *nodes, const int *indexes, const Point
 				}
 				
 				s1[++top1] = nodes[cur].left;
-				if (query.coords[split_axis] > nodes[cur].split_value && (query.coords[split_axis] - nodes[cur].split_value)*(query.coords[split_axis] - nodes[cur].split_value) > largest_dist){
+				if (query.coords[split_axis] > nodes[cur].split_value && (query.coords[split_axis] - nodes[cur].split_value)*(query.coords[split_axis] - nodes[cur].split_value) > largest_dist) {
 					//if closer to right
 					s1[top1] &= ~(1<<30);
 				}
@@ -212,7 +206,7 @@ __device__ void Search(const CUDA_KDNode *nodes, const int *indexes, const Point
 		}
 	}//mode!=0 end bracket
 	
-	for (int i = 0 ; i< K_SIZE;i++){
+	for (int i = 0 ; i< K_SIZE;i++) {
     		*(ret_index+i) = idx[i];
     		*(ret_dist+i) = dist[i];
 	}
@@ -262,10 +256,10 @@ void CUDA_KDTree::CreateKDTree(KDNode *root, int num_nodes, const vector <Point>
 
     to_visit.push_back(root);
 
-    while(to_visit.size()) {
+    while (to_visit.size()) {
         vector <KDNode*> next_search;
 
-        while(to_visit.size()) {
+        while (to_visit.size()) {
             KDNode *cur = to_visit.back();
             to_visit.pop_back();
 
@@ -278,7 +272,7 @@ void CUDA_KDTree::CreateKDTree(KDNode *root, int num_nodes, const vector <Point>
             cpu_nodes[id].split_value = cur->split_value;
             cpu_nodes[id].num_indexes = cur->indexes.size();
 
-            if(cur->indexes.size()) {
+            if (cur->indexes.size()) {
                 for(unsigned int i=0; i < cur->indexes.size(); i++)
                     indexes[cur_pos+i] = cur->indexes[i];
 
@@ -291,10 +285,10 @@ void CUDA_KDTree::CreateKDTree(KDNode *root, int num_nodes, const vector <Point>
                 cpu_nodes[id].indexes = -1;
             }
 
-            if(cur->left)
+            if (cur->left)
                 next_search.push_back(cur->left);
 
-            if(cur->right)
+            if (cur->right)
                 next_search.push_back(cur->right);
         }
 
