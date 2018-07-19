@@ -2,6 +2,18 @@
 
 GPU Traversal of KdTree for N-body problems
 
+This is my senior year undergrad research project. It is an implementation of this paper:
+
+https://engineering.purdue.edu/~milind/docs/sc13.pdf
+
+Basically it uses autorope and lockstep traversal to improve the performance for kdtree traversal on GPU
+
+
+
+
+
+
+
 1.Reference
 
 The kdtree construction method and CPU traversal of kdTree is downloaded from http://nghiaho.com/?p=437 for comparation.
